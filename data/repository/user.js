@@ -1,7 +1,6 @@
 'use strict';
 
 var users = require('../models/user');
-require('../models/device');
 
 module.exports = {
   find: function (condition, isPopulated) {
@@ -9,7 +8,6 @@ module.exports = {
       //Populate referenced object(s)
       return users
         .find(condition)
-        .populate('device')
         .exec();
     }
     else {
