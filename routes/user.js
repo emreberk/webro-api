@@ -9,7 +9,7 @@ router.route('/getUser')
   .get((req,res) => {
     wrapper.defineArgs(req,res).execute(function* (req, res) {
       var userId = req.body.userId;
-
+      console.log("get user called");
       var result = yield userRepository.find({_id: userId}, true);
 
       res.send(result);
