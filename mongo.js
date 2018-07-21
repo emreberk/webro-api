@@ -4,7 +4,7 @@ module.exports = {
   init: () =>{
     if(process.env.NODE_ENV == 'production'){
       return {
-        connectionString: 'mongodb://webro:webro11@ds247171.mlab.com:47171/webro',
+        connectionString: '',
       }
     }
     else {
