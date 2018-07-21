@@ -13,6 +13,7 @@ var authorization = require('./authorization/authorization.router');
 var promiseRoute = require('./routes/promise');
 var userRoute = require('./routes/user');
 var preloginRoute = require('./routes/prelogin');
+var taskRoute = require('./routes/task');
 
 // MongoDb Configuration
 var mConfig = mongoConfig.init();
@@ -36,10 +37,13 @@ app.use(cors());
 app.options('*', cors());
 
 app.use('/api', preloginRoute);
+app.use('/api', taskRoute);
 
+// Hero Mode On:
 //Modules above does not require authorization
 app.use('/api', authorization);
 //Modules below requires authorization
+// Hero Mode Off:
 
 // Implement Routes 
 app.use('/api', promiseRoute);
