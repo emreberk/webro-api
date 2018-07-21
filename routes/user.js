@@ -5,16 +5,12 @@ var express = require('express'),
   wrapper = require('../wrapper/co.wrapper'),
   userRepository = require('../data/repository/user');
 
-router.route('/getUser')
-  .get((req,res) => {
-    wrapper.defineArgs(req,res).execute(function* (req, res) {
-      var userId = req.body.userId;
-      console.log("get user called");
-      var result = yield userRepository.find({_id: userId}, true);
-
-      res.send(result);
+  router.route('/user/current').get((req, res) => {
+    wrapper.defineArgs(req, res).execute(function* (req, res) {
+      var foundedUser = req.app.get("userData");
+      var userObject = foundedUser;
+      res.send(userObject);
     });
   });
-
 
 module.exports = router;

@@ -12,6 +12,7 @@ var app = express();
 var authorization = require('./authorization/authorization.router');
 var promiseRoute = require('./routes/promise');
 var userRoute = require('./routes/user');
+var preloginRoute = require('./routes/prelogin');
 
 // MongoDb Configuration
 var mConfig = mongoConfig.init();
@@ -33,6 +34,8 @@ app.use(bodyParser.urlencoded());
 
 app.use(cors());
 app.options('*', cors());
+
+app.use('/api', preloginRoute);
 
 //Modules above does not require authorization
 app.use('/api', authorization);
